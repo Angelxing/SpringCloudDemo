@@ -1,10 +1,11 @@
 ### 已完成部分
-common 公用组件
-auth 登录服务
-gateway 网关,鉴权
-product 服务，CRUD
-web 网页服务
-docker compose 一键部署 
+- common 公用组件
+
+- auth 登录服务
+- gateway 网关,鉴权
+- product 服务，CRUD
+- web 网页服务
+- docker compose 一键部署 
 
 
 登录
