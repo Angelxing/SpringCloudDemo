@@ -1,0 +1,13 @@
+# 基础镜像
+FROM  openjdk:8-jre
+
+# 挂载目录
+VOLUME /home/demo
+# 创建目录
+RUN mkdir -p /home/demo
+# 指定路径
+WORKDIR /home/demo
+# 复制jar文件到路径
+COPY ./jar/product-1.0.0.jar /home/demo/product-1.0.0.jar
+# 启动认证服务
+ENTRYPOINT ["java","-jar","product-1.0.0.jar"]

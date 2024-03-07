@@ -1,0 +1,64 @@
+version: '3'
+services:
+  nacos:
+    container_name: nacos
+    image: nacos/nacos-server
+    build:
+      context: ./nacos
+    environment:
+      - MODE=standalone
+    volumes:
+      - ./nacos/logs/:/home/nacos/logs
+      - ./nacos/conf/application.properties:/home/nacos/conf/application.properties
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+    depends_on:
+      - mysql
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    build:
+      context: ./mysql
+    volumes:
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./mysql/logs:/logs
+      - ./mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: springclouddemo
+  redis:
+    container_name: service-redis
+    image: redis:6.0
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - ./redis/data:/data
+  service-auth:
+    container_name: service-auth
+    build:
+      context: ./demo/auth
+      dockerfile: dockerfile
+    depends_on:
+      - redis
+      - nacos
+      - mysql
+  service-gateway:
+    container_name: service-gateway
+    build:
+      context: ./demo/gateway
+      dockerfile: dockerfile
+    ports:
+      - "7573:8080"
+    depends_on:
+      - redis
+      - nacos
+      - mysql
+  service-product:
+    container_name: service-product
+    build:
+      context: ./demo/product
+      dockerfile: dockerfile
+    depends_on:
+      - redis
+      - nacos
+      - mysql
