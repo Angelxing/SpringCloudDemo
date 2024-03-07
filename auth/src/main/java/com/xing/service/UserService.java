@@ -5,12 +5,7 @@ import com.xing.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-/**
- * (User)表服务接口
- *
- * @author makejava
- * @since 2024-03-07 02:43:08
- */
+
 public interface UserService {
 
     /**

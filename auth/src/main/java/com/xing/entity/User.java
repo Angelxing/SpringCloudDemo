@@ -1,19 +1,19 @@
 package com.xing.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * (User)实体类
- *
- * @author makejava
- * @since 2024-03-07 02:43:06
- */
+
 @TableName("user")
+@Data
 public class User implements Serializable {
     private static final long serialVersionUID = 521456249133620050L;
 
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
     private String name;
@@ -21,29 +21,6 @@ public class User implements Serializable {
     private String password;
 
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
 }
 

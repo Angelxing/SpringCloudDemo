@@ -8,12 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-/**
- * (User)表数据库访问层
- *
- * @author makejava
- * @since 2024-03-07 02:43:04
- */
+
 public interface UserDao extends BaseMapper<User> {
 
     /**

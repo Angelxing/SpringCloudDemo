@@ -6,12 +6,7 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
-/**
- * (UserRole)表实体类
- *
- * @author liuyzh
- * @since 2024-03-07 15:59:25
- */
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 @SuppressWarnings("serial")

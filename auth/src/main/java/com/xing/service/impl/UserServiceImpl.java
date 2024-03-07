@@ -11,12 +11,7 @@ import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.Resource;
 
-/**
- * (User)表服务实现类
- *
- * @author makejava
- * @since 2024-03-07 02:43:09
- */
+
 @Service("userService")
 public class UserServiceImpl implements UserService {
     @Resource
