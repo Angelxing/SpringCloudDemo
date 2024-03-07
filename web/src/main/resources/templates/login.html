@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div id="main-container">
+    <!-- 用户名密码登录部分 -->
+    <form id="standard-login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <button type="button" id="standard-login-btn">Standard Login</button>
+    </form>
+
+    <!-- GitHub登录部分 -->
+    <button type="button" id="github-login-btn">Login with GitHub</button>
+
+    <!-- 显示登录状态和错误信息 -->
+    <div id="message"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // 用户名密码登录事件绑定
+        $("#standard-login-btn").click(function () {
+            var username = $("#username").val();
+            var password = $("#password").val();
+
+            // 此处为模拟，实际应发送AJAX请求到服务器进行验证
+            $.ajax({
+                url: "/auth/doLogin",
+                method: "POST",
+                data: { username: username, password: password },
+                success: function (response) {
+                    if (response === "success") {
+                        window.location.href = "/web/home"; // 登录成功跳转至主页
+                    } else {
+                        $("#message").text(response); // 显示错误信息
+                    }
+                },
+                error: function () {
+                    $("#message").text("An error occurred during login.");
+                }
+            });
+        });
+
+        // GitHub登录按钮点击事件
+        $("#github-login-btn").click(function () {
+            // 此处为模拟链接，实际应使用OAuth授权流程
+            window.location.href = "/oauth/github"; // 重定向至GitHub授权页面
+        });
+    });
+</script>
+</body>
+</html>
